@@ -1,6 +1,6 @@
+// proxy123.js
 const express = require('express');
 const { createProxyMiddleware } = require('http-proxy-middleware');
-
 const app = express();
 
 app.use('/', createProxyMiddleware({
@@ -8,12 +8,10 @@ app.use('/', createProxyMiddleware({
   changeOrigin: true,
   secure: false,
   onProxyRes: (proxyRes) => {
-    // Remove headers that block cross-origin loading
     delete proxyRes.headers['x-frame-options'];
     delete proxyRes.headers['content-security-policy'];
   },
-  selfHandleResponse: false,
-  pathRewrite: { '^/': '' }
+  pathRewrite: { '^/': '' },
 }));
 
 const PORT = process.env.PORT || 3000;
