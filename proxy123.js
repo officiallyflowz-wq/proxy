@@ -13,4 +13,5 @@ app.use('/', createProxyMiddleware({
   pathRewrite: { '^/': '' }
 }));
 
-app.listen(3000, () => console.log('Proxy is live, baby. Time to game.'));
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Running on port ${PORT}`));
