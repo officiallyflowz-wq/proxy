@@ -3,7 +3,7 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 const app = express();
 
 app.use('/', createProxyMiddleware({
-  target: 'https://www.crazygames.com',
+  target: 'https://www.crazygames.com/game/fragen',
   changeOrigin: true,
   secure: false,
   onProxyRes: (proxyRes) => {
